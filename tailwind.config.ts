@@ -53,7 +53,7 @@ const config: Config = {
       },
       backgroundImage: {
         "cream-gradient": "linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #EDE3D5 100%)",
-        "hero-gradient": "linear-gradient(160deg, #FEFCF9 0%, #F5EFE6 60%, #EDE3D5 100%)",
+        "hero-gradient": "linear-gradient(175deg, #FAF7F0 0%, #F5ECD8 20%, #ECD6B2 45%, #DBBE88 72%, #C9A058 100%)",
         "rose-gradient": "linear-gradient(135deg, #7A1A1A 0%, #931F1F 100%)",
         "gold-gradient": "linear-gradient(135deg, #C49A4A 0%, #D4AD5E 50%, #C49A4A 100%)",
         "section-gradient": "linear-gradient(180deg, #FAF7F2 0%, #F5EFE6 100%)",
