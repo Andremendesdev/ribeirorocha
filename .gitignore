@@ -1,0 +1,45 @@
+# Dependências
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js — build e cache
+.next/
+out/
+
+# Variáveis de ambiente (segredos, API keys)
+.env
+.env.*
+!.env.example
+
+# Logs e debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testes e cobertura
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Ferramentas / deploy
+.vercel/
+.turbo/
+.eslintcache
+
+# SO e editores
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# IDE (opcional — descomente se não quiser compartilhar configs locais)
+# .idea/
+# .vscode/
