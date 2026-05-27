@@ -10,8 +10,12 @@ const container = {
 };
 
 const item = {
-  hidden:  { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 const avatars = [
@@ -25,44 +29,51 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-20"
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 lg:pt-24 pb-20"
     >
       {/* Base gradient: white top → rich warm gold bottom */}
       <div className="absolute inset-0 bg-hero-gradient" />
-
-      {/* Background pattern — motivos odontológicos sutis */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "url('/hero-bg-pattern.png')",
-          backgroundSize: "600px auto",
-          backgroundRepeat: "repeat",
-          opacity: 0.35,
-          mixBlendMode: "multiply",
-        }}
-      />
 
       {/* Radial light from top-left — simula luz natural entrando */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 80% 60% at 10% 5%, rgba(255,255,255,0.72) 0%, transparent 65%)",
+          background:
+            "radial-gradient(ellipse 80% 60% at 10% 5%, rgba(255,255,255,0.72) 0%, transparent 65%)",
         }}
       />
 
       {/* Escurecimento canto inferior direito */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 70% 60% at 100% 100%, rgba(122,26,26,0.18) 0%, rgba(100,30,18,0.08) 45%, transparent 75%)",
-        }}
-      />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_90%_70%_at_50%_100%,theme(colors.cream.100/35)_0%,theme(colors.cream.50/12)_50%,transparent_85%)]" />
 
       {/* Linha divisória sutil no topo — reforça separação da navbar */}
       <div
         className="absolute top-0 inset-x-0 h-px pointer-events-none"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(196,154,74,0.35), transparent)" }}
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(196,154,74,0.35), transparent)",
+        }}
       />
+
+      {/* hero.png como background no mobile — some no lg */}
+      <div className="absolute inset-0 lg:hidden pointer-events-none">
+        <Image
+          src="/hero.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        {/* Overlay que funde a foto com o gradiente do fundo */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(175deg, rgba(252,250,245,0.96) 0%, rgba(250,245,232,0.90) 30%, rgba(240,225,195,0.84) 65%, rgba(230,205,158,0.88) 100%)",
+          }}
+        />
+      </div>
 
       {/* Dot pattern top-left */}
       <div className="absolute top-28 left-0 w-56 h-56 dot-pattern opacity-40 pointer-events-none" />
@@ -72,11 +83,13 @@ export default function Hero() {
       {/* Borda dourada decorativa embaixo da seção */}
       <div
         className="absolute bottom-0 inset-x-0 h-[3px] pointer-events-none"
-        style={{ background: "linear-gradient(90deg, transparent 0%,rgb(202, 152, 59) 30%, #E8C880 50%, #C49A4A 70%, transparent 100%)" }}
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%,rgb(202, 152, 59) 30%, #E8C880 50%, #C49A4A 70%, transparent 100%)",
+        }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
         {/* ── LEFT: Text content ── */}
         <motion.div
           variants={container}
@@ -106,7 +119,8 @@ export default function Hero() {
               <em
                 className="not-italic"
                 style={{
-                  background: "linear-gradient(135deg, #7A1A1A 0%, #A8251E 100%)",
+                  background:
+                    "linear-gradient(135deg, #7A1A1A 0%, #A8251E 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -126,16 +140,19 @@ export default function Hero() {
             variants={item}
             className="mb-8 text-base leading-relaxed text-warm-500 max-w-md"
           >
-            Na Ribeiro &amp; Rocha, unimos tecnologia avançada, materiais de alta
-            qualidade e atendimento humanizado para oferecer uma experiência única
-            e resultados naturais.
+            Na Ribeiro &amp; Rocha, unimos tecnologia avançada, materiais de
+            alta qualidade e atendimento humanizado para oferecer uma
+            experiência única e resultados naturais.
           </motion.p>
 
           {/* CTA buttons */}
           <motion.div variants={item} className="flex flex-wrap gap-3 mb-10">
             <motion.a
               href="#contato"
-              whileHover={{ scale: 1.03, boxShadow: "0 8px 32px rgba(168, 28, 28, 0.4)" }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0 8px 32px rgba(168, 28, 28, 0.4)",
+              }}
               whileTap={{ scale: 0.97 }}
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-full
                 bg-rose-700 hover:bg-rose-800 text-white font-medium text-sm
@@ -170,7 +187,10 @@ export default function Hero() {
                   key={i}
                   className="w-9 h-9 rounded-full border-2 border-cream-100 flex items-center justify-center
                     text-xs font-semibold text-white flex-shrink-0"
-                  style={{ backgroundColor: a.color, zIndex: avatars.length - i }}
+                  style={{
+                    backgroundColor: a.color,
+                    zIndex: avatars.length - i,
+                  }}
                 >
                   {a.initials}
                 </div>
@@ -180,29 +200,37 @@ export default function Hero() {
               {/* Stars */}
               <div className="flex gap-0.5 mb-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="text-gold-500 fill-gold-500" />
+                  <Star
+                    key={i}
+                    size={12}
+                    className="text-gold-500 fill-gold-500"
+                  />
                 ))}
               </div>
               <p className="text-xs text-warm-500">
-                <span className="font-semibold text-warm-800">Mais de 1.000</span> sorrisos transformados
+                <span className="font-semibold text-warm-800">
+                  Mais de 1.000
+                </span>{" "}
+                sorrisos transformados
               </p>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* ── RIGHT: Clinic image ── */}
+        {/* ── RIGHT: Clinic image — visível apenas no lg+ ── */}
         <motion.div
           initial={{ opacity: 0, x: 40, scale: 0.96 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
+          className="relative hidden lg:block"
         >
           {/* Gold accent ring — atrás da imagem */}
           <div
             className="absolute -z-10 inset-4 rounded-[2.25rem] translate-x-5 translate-y-5"
             style={{
               border: "1.5px solid transparent",
-              background: "linear-gradient(white, white) padding-box, linear-gradient(135deg, #C49A4A, #E8C880, #A67C3A) border-box",
+              background:
+                "linear-gradient(white, white) padding-box, linear-gradient(135deg, #C49A4A, #E8C880, #A67C3A) border-box",
               opacity: 0.55,
             }}
           />
@@ -210,7 +238,10 @@ export default function Hero() {
           {/* Main image container */}
           <div
             className="relative rounded-[2rem] overflow-hidden"
-            style={{ boxShadow: "0 24px 72px rgba(44,24,14,0.22), 0 4px 20px rgba(44,24,14,0.10)" }}
+            style={{
+              boxShadow:
+                "0 24px 72px rgba(44,24,14,0.22), 0 4px 20px rgba(44,24,14,0.10)",
+            }}
           >
             <div className="w-full aspect-[4/3] relative">
               <Image
@@ -233,46 +264,74 @@ export default function Hero() {
           {/* Floating card — experience */}
           <motion.div
             animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
             className="absolute -bottom-5 -left-6 flex items-center gap-3 px-5 py-4 rounded-2xl"
             style={{
               background: "rgba(255,255,255,0.90)",
               backdropFilter: "blur(16px)",
               WebkitBackdropFilter: "blur(16px)",
               border: "1px solid rgba(196,154,74,0.25)",
-              boxShadow: "0 4px 24px rgba(44,24,14,0.10), 0 1px 4px rgba(44,24,14,0.06)",
+              boxShadow:
+                "0 4px 24px rgba(44,24,14,0.10), 0 1px 4px rgba(44,24,14,0.06)",
             }}
           >
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: "linear-gradient(135deg, #7A1A1A, #A8251E)" }}>
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "linear-gradient(135deg, #7A1A1A, #A8251E)",
+              }}
+            >
               <Star size={16} className="text-gold-300" fill="currentColor" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-warm-900">+8 Anos de experiência</p>
-              <p className="text-[11px] text-warm-500">Especialistas qualificados</p>
+              <p className="text-xs font-semibold text-warm-900">
+                +8 Anos de experiência
+              </p>
+              <p className="text-[11px] text-warm-500">
+                Especialistas qualificados
+              </p>
             </div>
           </motion.div>
 
           {/* Floating card — technology */}
           <motion.div
             animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
             className="absolute -top-4 -right-5 flex items-center gap-3 px-5 py-4 rounded-2xl"
             style={{
               background: "rgba(255,255,255,0.90)",
               backdropFilter: "blur(16px)",
               WebkitBackdropFilter: "blur(16px)",
               border: "1px solid rgba(196,154,74,0.25)",
-              boxShadow: "0 4px 24px rgba(44,24,14,0.10), 0 1px 4px rgba(44,24,14,0.06)",
+              boxShadow:
+                "0 4px 24px rgba(44,24,14,0.10), 0 1px 4px rgba(44,24,14,0.06)",
             }}
           >
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: "linear-gradient(135deg, #A67C3A, #C49A4A)" }}>
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "linear-gradient(135deg, #A67C3A, #C49A4A)",
+              }}
+            >
               <span className="text-white text-lg">🦷</span>
             </div>
             <div>
-              <p className="text-xs font-semibold text-warm-900">Tecnologia Digital</p>
-              <p className="text-[11px] text-warm-500">Equipamentos de última geração</p>
+              <p className="text-xs font-semibold text-warm-900">
+                Tecnologia Digital
+              </p>
+              <p className="text-[11px] text-warm-500">
+                Equipamentos de última geração
+              </p>
             </div>
           </motion.div>
         </motion.div>
